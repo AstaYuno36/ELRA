@@ -24,7 +24,7 @@ function loadGalleryImages() {
         wrapper.className = 'image-wrapper';
         
         const img = document.createElement('img');
-        img.src = `image/${imageName}`;
+        img.src = `Image/${imageName}`;
         img.className = 'gallery-image';
         img.alt = imageName;
         
@@ -44,7 +44,7 @@ function openModal(imageIndex) {
     const nextButton = document.querySelector('.next-button');
     
     currentImageIndex = imageIndex;
-    modalImg.src = `image/${images[imageIndex]}`;
+    modalImg.src = `Image/${images[imageIndex]}`;
     modal.style.display = 'block';
     
     // Afficher les boutons de navigation
@@ -64,7 +64,7 @@ function updateNavigationButtons() {
 function previousImage() {
     if (currentImageIndex > 0) {
         currentImageIndex--;
-        document.getElementById('modalImage').src = `image/${images[currentImageIndex]}`;
+        document.getElementById('modalImage').src = `Image/${images[currentImageIndex]}`;
         updateNavigationButtons();
     }
 }
@@ -73,7 +73,7 @@ function previousImage() {
 function nextImage() {
     if (currentImageIndex < images.length - 1) {
         currentImageIndex++;
-        document.getElementById('modalImage').src = `image/${images[currentImageIndex]}`;
+        document.getElementById('modalImage').src = `Image/${images[currentImageIndex]}`;
         updateNavigationButtons();
     }
 }
