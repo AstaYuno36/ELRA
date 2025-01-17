@@ -24,7 +24,7 @@ function loadGalleryImages() {
         wrapper.className = 'image-wrapper';
         
         const img = document.createElement('img');
-        img.src = `Image/${imageName}`;
+        img.src = `image/${imageName}`; 
         img.className = 'gallery-image';
         img.alt = imageName;
         
