@@ -23,10 +23,29 @@ function loadGalleryImages() {
         const wrapper = document.createElement('div');
         wrapper.className = 'image-wrapper';
         
+        // Créer un conteneur de chargement
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'loading-placeholder';
+        wrapper.appendChild(loadingDiv);
+        
         const img = document.createElement('img');
-        img.src = `image/${imageName}`; 
+        img.src = `image/${imageName}`;
         img.className = 'gallery-image';
         img.alt = imageName;
+        img.loading = 'lazy'; // Activer le chargement progressif
+        
+        // Cacher l'image jusqu'à ce qu'elle soit chargée
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        
+        // Quand l'image est chargée
+        img.onload = () => {
+            loadingDiv.style.opacity = '0';
+            img.style.opacity = '1';
+            setTimeout(() => {
+                loadingDiv.remove();
+            }, 300);
+        };
         
         wrapper.appendChild(img);
         galleryContainer.appendChild(wrapper);
@@ -36,5 +55,5 @@ function loadGalleryImages() {
 // Charger les images au chargement de la page
 document.addEventListener('DOMContentLoaded', loadGalleryImages);
 
-// Recharger les images toutes les 30 secondes pour détecter les nouvelles images
+// Recharger les images toutes les 30 secondes
 setInterval(loadGalleryImages, 30000);
