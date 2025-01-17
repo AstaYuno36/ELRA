@@ -8,12 +8,24 @@ const images = [
     'ets2_20250115_174644_00.png'
 ];
 
+// Obtenir le chemin de base du site
+const getBasePath = () => {
+    // Si nous sommes sur GitHub Pages
+    if (window.location.hostname.includes('github.io')) {
+        return '/ELRA/';
+    }
+    // En local
+    return '/';
+};
+
 function loadGalleryImages() {
     const galleryContainer = document.getElementById('gallery-container');
     if (!galleryContainer) {
         console.error('Container de galerie non trouvé');
         return;
     }
+
+    const basePath = getBasePath();
 
     // Vider la galerie existante
     galleryContainer.innerHTML = '';
@@ -24,9 +36,15 @@ function loadGalleryImages() {
         wrapper.className = 'image-wrapper';
         
         const img = document.createElement('img');
-        img.src = `Image/${imageName}`;
+        img.src = `${basePath}Image/${imageName}`;
         img.className = 'gallery-image';
         img.alt = imageName;
+        
+        // Ajouter un gestionnaire d'erreur pour le débogage
+        img.onerror = () => {
+            console.error(`Erreur de chargement pour l'image: ${img.src}`);
+            img.style.border = '2px solid red';
+        };
         
         // Ajouter le gestionnaire de clic pour ouvrir le modal
         img.onclick = () => openModal(index);
@@ -43,8 +61,9 @@ function openModal(imageIndex) {
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
     
+    const basePath = getBasePath();
     currentImageIndex = imageIndex;
-    modalImg.src = `Image/${images[imageIndex]}`;
+    modalImg.src = `${basePath}Image/${images[imageIndex]}`;
     modal.style.display = 'block';
     
     // Afficher les boutons de navigation
@@ -64,7 +83,8 @@ function updateNavigationButtons() {
 function previousImage() {
     if (currentImageIndex > 0) {
         currentImageIndex--;
-        document.getElementById('modalImage').src = `Image/${images[currentImageIndex]}`;
+        const basePath = getBasePath();
+        document.getElementById('modalImage').src = `${basePath}Image/${images[currentImageIndex]}`;
         updateNavigationButtons();
     }
 }
@@ -73,7 +93,8 @@ function previousImage() {
 function nextImage() {
     if (currentImageIndex < images.length - 1) {
         currentImageIndex++;
-        document.getElementById('modalImage').src = `Image/${images[currentImageIndex]}`;
+        const basePath = getBasePath();
+        document.getElementById('modalImage').src = `${basePath}Image/${images[currentImageIndex]}`;
         updateNavigationButtons();
     }
 }
