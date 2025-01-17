@@ -99,6 +99,7 @@
             width: 100%;
             height: 100%;
             padding: 20px;
+            background: none;
         }
 
         #modalImage {
@@ -106,17 +107,29 @@
             max-height: 90vh;
             object-fit: contain;
             border-radius: 8px;
+            background: none;
         }
 
         .close-modal {
             position: absolute;
             top: 20px;
-            right: 30px;
+            left: 20px;
             color: #fff;
-            font-size: 40px;
-            font-weight: bold;
+            font-size: 30px;
             cursor: pointer;
             z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .nav-button {
@@ -126,20 +139,20 @@
             background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
-            padding: 20px;
             font-size: 24px;
             cursor: pointer;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s ease;
+            z-index: 1001;
         }
 
         .nav-button:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .prev-button {
@@ -299,11 +312,11 @@
 
     <!-- Modal pour les images -->
     <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal">×</span>
         <div class="modal-content">
-            <button class="nav-button prev-button" style="display: none;">&lt;</button>
+            <button class="nav-button prev-button" style="display: none;">&#10094;</button>
             <img id="modalImage" src="" alt="">
-            <button class="nav-button next-button" style="display: none;">&gt;</button>
+            <button class="nav-button next-button" style="display: none;">&#10095;</button>
         </div>
     </div>
 
