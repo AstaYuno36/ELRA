@@ -1,0 +1,638 @@
+/* Thème sombre - Styles généraux */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --bg-dark: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --bg-card-hover: #242424;
+    --text-color: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a1a 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Styles de la navbar */
+.navbar {
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, var(--primary-color), #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform var(--transition-speed) ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    position: relative;
+    color: var(--text-color) !important;
+    font-weight: 500;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--primary-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Styles des sections */
+section {
+    min-height: 50vh;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(0, 123, 255, 0.1), transparent);
+    pointer-events: none;
+}
+
+/* Styles des cartes */
+.card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    background: var(--bg-card-hover);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Style des boutons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), #00c6ff);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    background: linear-gradient(45deg, #0056b3, #00a6ff);
+}
+
+/* Liste des valeurs */
+.values-list {
+    list-style: none;
+    padding: 0;
+}
+
+.values-list li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed) ease;
+    transform-origin: left;
+}
+
+.values-list li:hover {
+    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Titres */
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--text-color), #a0a0a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card, .values-list li, h1, h2, h3, p {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+
+/* Thème sombre - Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Styles de la navbar */
+.navbar {
+    background-color: #000000 !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+/* Styles des sections */
+section {
+    min-height: 50vh;
+}
+
+/* Style de la galerie */
+.gallery-item {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Styles des cartes */
+.card {
+    background-color: #2d2d2d;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    color: #ffffff;
+}
+
+/* Style des boutons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Styles des réseaux sociaux */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-links .btn {
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    font-weight: 500;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #404040;
+}
+
+.social-links .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.social-links .bi {
+    margin-right: 5px;
+}
+
+/* Couleurs spécifiques au survol */
+.social-links a[href*="instagram"]:hover {
+    background-color: #E1306C;
+    color: white;
+    border-color: #E1306C;
+}
+
+.social-links a[href*="tiktok"]:hover {
+    background-color: #000000;
+    color: white;
+    border-color: #ffffff;
+}
+
+.social-links a[href*="twitch"]:hover {
+    background-color: #6441a5;
+    color: white;
+    border-color: #6441a5;
+}
+
+.social-links a[href*="truckersmp"]:hover {
+    background-color: #1a75ff;
+    color: white;
+    border-color: #1a75ff;
+}
+
+/* Styles pour la section histoire */
+.card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.values-list li {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #363636;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.values-list li:hover {
+    transform: translateX(10px);
+    background-color: #404040;
+}
+
+/* Style pour les emojis */
+.emoji {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-style: normal;
+}
+
+.card-title strong {
+    background-color: #363636;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.flag {
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    font-size: 1.2em;
+}
+
+/* Section Événements */
+#evenements {
+    background-color: #242424 !important;
+}
+
+#evenements h2 {
+    color: #ffffff;
+}
+
+#calendar {
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Styles pour les éléments du calendrier */
+.fc {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.fc-toolbar-title {
+    color: #ffffff !important;
+}
+
+.fc-button {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+.fc-button:hover {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+}
+
+.fc-day {
+    background-color: #363636 !important;
+    border-color: #404040 !important;
+}
+
+.fc-day-today {
+    background-color: #1a1a1a !important;
+}
+
+.fc-daygrid-day-number {
+    color: #ffffff !important;
+}
+
+.fc-event {
+    background-color: #007bff !important;
+    border-color: #0056b3 !important;
+}
+
+/* Section Réseaux Sociaux */
+#social-feed .card {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+#social-feed .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#social-feed .card-title i {
+    font-size: 1.5rem;
+}
+
+.instagram-embed, .tiktok-embed {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Ajustements pour les widgets */
+.instagram-media, .tiktok-embed {
+    background-color: #2d2d2d !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .instagram-embed, .tiktok-embed {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Sections avec fond alterné */
+section:nth-child(even) {
+    background-color: #242424;
+}
+
+section:nth-child(odd) {
+    background-color: #1a1a1a;
+}
+
+/* Styles pour la section réseaux sociaux */
+.social-content {
+    padding: 1rem;
+}
+
+.social-divider {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.social-divider span {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-divider i {
+    margin: 0 1rem;
+    color: var(--primary-color);
+}
+
+.social-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.social-category {
+    text-align: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    color: var(--text-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles spécifiques pour chaque plateforme */
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: transparent;
+}
+
+.social-link.tiktok:hover {
+    background: linear-gradient(45deg, #000000, #69C9D0);
+    border-color: transparent;
+}
+
+.social-link.twitch:hover {
+    background: #6441a5;
+    border-color: transparent;
+}
+
+.social-link.discord:hover {
+    background: #5865F2;
+    border-color: transparent;
+}
+
+/* Style pour les plateformes de jeu */
+.social-link:hover {
+    background: linear-gradient(45deg, var(--primary-color), #00c6ff);
+    border-color: transparent;
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Animation pour les liens sociaux */
+.social-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.social-link:hover::before {
+    left: 100%;
+}
+
+@media (max-width: 768px) {
+    .social-links-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Styles pour Twemoji */
+img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+    display: inline-block;
+}
+
+/* Style pour le logo de l'entreprise */
+.company-logo {
+    height: 60px;
+    width: auto;
+    margin-right: 15px;
+    vertical-align: middle;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.company-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Style pour le drapeau français */
+.flag-icon {
+    height: 20px;
+    width: auto;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
