@@ -15,41 +15,47 @@ function loadGalleryImages() {
         'ets2_20250115_174644_00.png'
     ];
 
-    // Vider la galerie existante
-    galleryContainer.innerHTML = '';
+    // Précharger toutes les images
+    const preloadImages = () => {
+        const promises = images.map(imageName => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(imageName);
+                img.onerror = () => reject(imageName);
+                img.src = `image/${imageName}`;
+            });
+        });
 
-    // Créer un élément pour chaque image
-    images.forEach(imageName => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'image-wrapper';
+        Promise.all(promises)
+            .then(() => {
+                displayImages();
+            })
+            .catch(error => {
+                console.error('Erreur de chargement:', error);
+                displayImages(); // Afficher quand même les images disponibles
+            });
+    };
+
+    // Afficher les images
+    const displayImages = () => {
+        galleryContainer.innerHTML = '';
         
-        // Créer un conteneur de chargement
-        const loadingDiv = document.createElement('div');
-        loadingDiv.className = 'loading-placeholder';
-        wrapper.appendChild(loadingDiv);
-        
-        const img = document.createElement('img');
-        img.src = `image/${imageName}`;
-        img.className = 'gallery-image';
-        img.alt = imageName;
-        img.loading = 'lazy'; // Activer le chargement progressif
-        
-        // Cacher l'image jusqu'à ce qu'elle soit chargée
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-        
-        // Quand l'image est chargée
-        img.onload = () => {
-            loadingDiv.style.opacity = '0';
-            img.style.opacity = '1';
-            setTimeout(() => {
-                loadingDiv.remove();
-            }, 300);
-        };
-        
-        wrapper.appendChild(img);
-        galleryContainer.appendChild(wrapper);
-    });
+        images.forEach(imageName => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'image-wrapper';
+            
+            const img = document.createElement('img');
+            img.src = `image/${imageName}`;
+            img.className = 'gallery-image';
+            img.alt = imageName;
+            
+            wrapper.appendChild(img);
+            galleryContainer.appendChild(wrapper);
+        });
+    };
+
+    // Démarrer le préchargement
+    preloadImages();
 }
 
 // Charger les images au chargement de la page

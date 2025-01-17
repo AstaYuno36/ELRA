@@ -25,7 +25,11 @@
             height: 100%;
             object-fit: cover;
             border-radius: 8px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: transform 0.3s ease;
+            max-width: 100%;
+            transform-origin: center center;
+            will-change: transform;
+            backface-visibility: hidden;
         }
         #gallery-container {
             display: grid;
@@ -34,11 +38,15 @@
             padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
+            contain: content;
         }
         .image-wrapper {
             aspect-ratio: 16/9;
             overflow: hidden;
             position: relative;
+            background: #1a1d20;
+            border-radius: 8px;
+            transform: translateZ(0);
         }
         .gallery-image:hover {
             transform: scale(1.03);
@@ -46,6 +54,7 @@
         #galerie {
             background-color: #212529;
             padding: 40px 0;
+            contain: content;
         }
         .gallery-title {
             margin-bottom: 40px;
